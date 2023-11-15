@@ -51,14 +51,14 @@ Plot.plot({
   
   marks: [
     Plot.ruleY([0]),
-    Plot.barY(yCounts, {x: "Constellation", y: "count", tip: true , fill:"gender"}),
+    Plot.barY(yCounts, {x: "Constellation", y: "count", tip: true , fill:"gender",
+                        title: d => `Count: ${d.count}\nConstellation: ${chinese[d.Constellation]}\nGender: ${d.gender}`}),
   ],
 })
 )}
 
 function _8(Plot,plot2,chinese,data){return(
 Plot.plot({  
-
 	marginTop: plot2.mt, 
 	marginRight: plot2.mr, 
 	marginBottom: plot2.mb, 
@@ -67,7 +67,8 @@ Plot.plot({
   x: {ticks: 12,
       tickFormat: (d) => { return chinese[d]; }},
 	marks: [    
-		Plot.rectY(data, Plot.binX({y:"count"}, { x:"Constellation", interval:1, fill:"Gender", tip: true })),    
+		Plot.rectY(data, Plot.binX({y:"count"}, { x:"Constellation", interval:1, fill:"Gender", tip: true,
+                                          title: d => `Constellation: ${chinese[d.Constellation]}\nGender: ${d.Gender == "male" ? "男":"女"}`})),    
 		Plot.gridY({stroke: "white", strokeOpacity:0})
 	 ]
 })
