@@ -22,6 +22,11 @@ Inputs.form({
 	mr:  Inputs.range([0, 100], {label: "marginRight", step: 1}),
 	mb:  Inputs.range([0, 100], {label: "marginBottom", step: 1}),
 	ml:  Inputs.range([0, 100], {label: "marginLeft", step: 1}),
+  // 參考111598006 羅名彥
+  r:  Inputs.range([0, 255], {label: "color_r", step: 1}),
+	g:  Inputs.range([0, 255], {label: "color_g", step: 1}),
+	b:  Inputs.range([0, 255], {label: "color_b", step: 1}),
+  tip_choose: Inputs.range([0, 1], {label: "tip", step: 1})
 })
 )}
 
@@ -34,7 +39,26 @@ Plot.plot({
 	marginLeft: plot1.ml,   
 	y: {grid: true, label: "count"},  
 	marks: [    
-		Plot.rectY(data, Plot.binX({y:"count"}, { x:"Year", interval:1, fill:"Gender", tip: true })),    
+		Plot.rectY(data, Plot.binX({y:"count"}, { x:"Year", interval:1, tip: plot1.tip_choose, fill:"Gender"})),    
+		Plot.gridY({ interval: 1, stroke: "white", strokeOpacity: 0.5 })
+	 ]
+})
+)}
+
+function _fillColor(plot1){return(
+`rgb(${plot1.r},${plot1.g},${plot1.b})`
+)}
+
+function _7(Plot,plot1,data,fillColor){return(
+Plot.plot({  
+
+	marginTop: plot1.mt, 
+	marginRight: plot1.mr, 
+	marginBottom: plot1.mb, 
+	marginLeft: plot1.ml,   
+	y: {grid: true, label: "count"},  
+	marks: [    
+		Plot.rectY(data, Plot.binX({y:"count"}, { x:"Year", interval:1, tip: plot1.tip_choose, fill:fillColor})),    
 		Plot.gridY({ interval: 1, stroke: "white", strokeOpacity: 0.5 })
 	 ]
 })
@@ -53,5 +77,7 @@ export default function define(runtime, observer) {
   main.variable(observer("viewof plot1")).define("viewof plot1", ["Inputs"], _plot1);
   main.variable(observer("plot1")).define("plot1", ["Generators", "viewof plot1"], (G, _) => G.input(_));
   main.variable(observer()).define(["Plot","plot1","data"], _5);
+  main.variable(observer("fillColor")).define("fillColor", ["plot1"], _fillColor);
+  main.variable(observer()).define(["Plot","plot1","data","fillColor"], _7);
   return main;
 }
