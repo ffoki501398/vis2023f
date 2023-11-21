@@ -1,0 +1,14 @@
+{
+  "name": "2f6b6385bef7646c",
+  "main": "2f6b6385bef7646c@93.js",
+  "version": "93.0.0",
+  "homepage": "https://observablehq.com/d/2f6b6385bef7646c",
+  "author": {
+    "name": "Ming's Workspace",
+    "url": "https://observablehq.com/@ming2-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
