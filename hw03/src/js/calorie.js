@@ -7,7 +7,7 @@ function loadjson() {
       calorieData = data;
       if (calorieIndex < calorieData.length) {
         const point = calorieData[calorieIndex];
-        updateIconPosition(point.X, point.Y);
+        //updateIconPosition(point.X, point.Y);
         updateInfo(point.Time, point.Floor, point.Distance, point.Calorie);
         calorieIndex++;
       } else {
@@ -40,4 +40,4 @@ let calorieData = null;
 loadjson();
 
 // 每秒更新一次位置
-setInterval(loadjson, 1000);
+setInterval(loadjson, 100);

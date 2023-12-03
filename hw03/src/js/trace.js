@@ -17,6 +17,7 @@ function calculatePosition(x, y) {
 }
 
 function updateIconPosition(x, y) {
+  console.log(x, y);
   const { x: iconX, y: iconY } = calculatePosition(x, y);
   icon.style.left = `${iconX}%`;
   icon.style.top = `${iconY}%`;
@@ -58,4 +59,4 @@ function loadjson() {
 loadjson();
 
 // 每秒更新一次位置
-setInterval(loadjson, 1000);
+setInterval(loadjson, 100);
