@@ -1,0 +1,14 @@
+{
+  "name": "daaf24e43e4cdced",
+  "main": "daaf24e43e4cdced@123.js",
+  "version": "123.0.0",
+  "homepage": "https://observablehq.com/d/daaf24e43e4cdced",
+  "author": {
+    "name": "Ming's Workspace",
+    "url": "https://observablehq.com/@ming2-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
